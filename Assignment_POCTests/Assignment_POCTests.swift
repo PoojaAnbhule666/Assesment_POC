@@ -2,7 +2,7 @@
 //  Assignment_POCTests.swift
 //  Assignment_POCTests
 //
-//  Created by Deep on 26/02/20.
+//  Created by Pooja on 26/02/20.
 //  Copyright © 2020 Pooja. All rights reserved.
 //
 
