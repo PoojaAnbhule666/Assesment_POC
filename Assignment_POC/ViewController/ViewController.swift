@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ViewController: UIViewController {
     
@@ -118,12 +119,13 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
             
             let imgUrl = self.rowsArray[indexPath.row].imageHref
             
-//            //---- image downlaoded through sdWeb Image
-//            cell.product_ImageView.sd_setImage(with: URL(string: imgUrl ?? ""), placeholderImage: UIImage(named: "placeholder"), options: SDWebImageOptions.refreshCached) { (image, error, type, url) in
-//                if error != nil {
-//                    print("failed to download \(String(describing: url))  error \(String(describing: error))")
-//                }
-//            }
+            //---- image downlaoded through sdWeb Image
+            
+            cell.product_ImageView.sd_setImage(with: URL(string: imgUrl ?? ""), placeholderImage: UIImage(named: "placeholder"), options: SDWebImageOptions.refreshCached) { (image, error, type, url) in
+                if error != nil {
+                    print("failed to download \(String(describing: url))  error \(String(describing: error))")
+                }
+            }
         }
         return cell
     }
