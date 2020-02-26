@@ -16,7 +16,10 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+       configureTableView()
+//       pullDownrefresh()
+       callApi()
     }
     
     func configureTableView() {
@@ -34,6 +37,69 @@ class ViewController: UIViewController {
             data_TableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
             data_TableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         }
+    
+    // ---- Rest Api Call
+    
+    func callApi()  {
+        let url =  "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
+//        showActivityIndicatorOnView(view: self.view)
+        apiCall(serviceURL: url) { (isSuccesfull, response) in
+            
+            if isSuccesfull {
+                do {
+                    let decoder = JSONDecoder()
+                    let jsonData = try decoder.decode(Json_Data.self, from: response as! Data)
+                    
+                    DispatchQueue.main.async {
+                        self.navigationItem.title = jsonData.title ?? ""
+                        //---- get the Data in rows array
+                        self.rowsArray = jsonData.rows ?? []
+                        self.data_TableView.reloadData()
+                    }
+                    
+//                    self.removeActivityIndicator()
+                } catch {
+                    print("error----",error.localizedDescription)
+                }
+            }
+        }
+    }
+    
+    //----  Get Api call request
+
+    func apiCall(serviceURL : String, completionBlock : @escaping (_ successful:Bool, _ responseData : Any) -> ()) {
+        guard let url = URL(string: "\(serviceURL)") else { return }
+        print("url is-->> \(url)")
+        
+        // set up the session
+        let config = URLSessionConfiguration.default
+        let sharedSession = URLSession(configuration: config)
+        
+        let dataTask = sharedSession.dataTask(with: url,
+                                              completionHandler: { (data, response, error) in
+                                                guard error == nil else {
+                                                    print ("error: \(error!)")
+                                                    completionBlock(false,error ?? "error")
+                                                    return
+                                                }
+                                                
+                                                guard let content = data else {
+                                                    completionBlock(false,"error no data")
+                                                    return
+                                                }
+                                                // Convert Data to string using isoLatin2
+                                                
+                                                let strData = String(data: content, encoding: .isoLatin2)
+                                                
+                                                guard let decodedData = strData?.data(using: .utf8) else {
+                                                    completionBlock(false,"error no data")
+                                                    return
+                                                }
+                                                completionBlock(true,decodedData)
+        })
+        dataTask.resume()
+    }
+    
 }
 
 //---- extension for UITableViewDataSource
