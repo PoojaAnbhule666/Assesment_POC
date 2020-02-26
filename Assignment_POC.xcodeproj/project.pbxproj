@@ -16,6 +16,7 @@
 		144617C42406472B000056B0 /* Assignment_POCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617C32406472B000056B0 /* Assignment_POCTests.swift */; };
 		144617D124065872000056B0 /* Json_Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617CF24065872000056B0 /* Json_Data.swift */; };
 		144617D224065872000056B0 /* Rows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617D024065872000056B0 /* Rows.swift */; };
+		144617D524065984000056B0 /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617D424065984000056B0 /* DataTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +43,7 @@
 		144617C52406472B000056B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		144617CF24065872000056B0 /* Json_Data.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Json_Data.swift; sourceTree = "<group>"; };
 		144617D024065872000056B0 /* Rows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rows.swift; sourceTree = "<group>"; };
+		144617D424065984000056B0 /* DataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +85,10 @@
 		144617AB24064722000056B0 /* Assignment_POC */ = {
 			isa = PBXGroup;
 			children = (
+				144617D32406593E000056B0 /* ViewController */,
 				144617CE24065768000056B0 /* Modal classes */,
 				144617AC24064722000056B0 /* AppDelegate.swift */,
 				144617AE24064722000056B0 /* SceneDelegate.swift */,
-				144617B024064722000056B0 /* ViewController.swift */,
 				144617B224064722000056B0 /* Main.storyboard */,
 				144617B52406472B000056B0 /* Assets.xcassets */,
 				144617B72406472B000056B0 /* LaunchScreen.storyboard */,
@@ -111,6 +113,15 @@
 				144617D024065872000056B0 /* Rows.swift */,
 			);
 			path = "Modal classes";
+			sourceTree = "<group>";
+		};
+		144617D32406593E000056B0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				144617B024064722000056B0 /* ViewController.swift */,
+				144617D424065984000056B0 /* DataTableViewCell.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,6 +226,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				144617B124064722000056B0 /* ViewController.swift in Sources */,
+				144617D524065984000056B0 /* DataTableViewCell.swift in Sources */,
 				144617D124065872000056B0 /* Json_Data.swift in Sources */,
 				144617AD24064722000056B0 /* AppDelegate.swift in Sources */,
 				144617D224065872000056B0 /* Rows.swift in Sources */,
