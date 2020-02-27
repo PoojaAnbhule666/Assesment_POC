@@ -41,6 +41,28 @@ class ViewController: UIViewController {
             data_TableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         }
     
+    
+    // --- observer method for Reachabiltiy of connection
+       
+       @objc func networkStatusChanged(notification: Notification) {
+           if let info = notification.userInfo as? [String: String] {
+               let connectionStatus = info["connection"]
+               if connectionStatus != "lost" {
+
+               } else {
+                   DispatchQueue.main.async {
+                       let alert = UIAlertController.init(title: "Connection", message: "No network avialble", preferredStyle: .alert)
+                       alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: { _ in
+                           alert.dismiss(animated: true, completion: nil)
+                       }))
+
+                       self.present(alert, animated: true, completion: nil)
+                   }
+               }
+           }
+           
+       }
+    
     // Method is For Pull Down refresh
       
       func pullDownrefresh(){
