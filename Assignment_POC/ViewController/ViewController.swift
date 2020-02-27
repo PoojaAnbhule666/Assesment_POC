@@ -14,12 +14,14 @@ class ViewController: UIViewController {
     fileprivate let datacellReuseIdentifier = "DataTableViewCell"
     fileprivate let data_TableView = UITableView()
     var rowsArray = [Rows]()
+    var activityIndicator = UIActivityIndicatorView()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
        configureTableView()
-//       pullDownrefresh()
+       pullDownrefresh()
        callApi()
     }
     
@@ -39,11 +41,46 @@ class ViewController: UIViewController {
             data_TableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         }
     
+    // Method is For Pull Down refresh
+      
+      func pullDownrefresh(){
+          
+          let refreshControl = UIRefreshControl()
+          refreshControl.addTarget(self, action:
+              #selector(handleRefresh(_:)),
+                                   for: UIControl.Event.valueChanged)
+          refreshControl.tintColor = UIColor.lightGray
+          self.data_TableView.insertSubview(refreshControl, at: 0)
+      }
+      
+      @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+          print("\(#function) pullDownrefresh ")
+          self.callApi()
+          refreshControl.endRefreshing()
+      }
+      
+      
+      //----- Add / remove Activity indicators method
+      
+      func showActivityIndicatorOnView (view : UIView) {
+          self.activityIndicator.center = view.center
+          activityIndicator.startAnimating()
+          view.addSubview(activityIndicator)
+      }
+      
+      func removeActivityIndicator () {
+          DispatchQueue.main.async {
+              self.activityIndicator.stopAnimating()
+              self.activityIndicator.removeFromSuperview()
+              
+          }
+      }
+    
     // ---- Rest Api Call
     
     func callApi()  {
         let url =  "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-//        showActivityIndicatorOnView(view: self.view)
+        showActivityIndicatorOnView(view: self.view)
         apiCall(serviceURL: url) { (isSuccesfull, response) in
             
             if isSuccesfull {
@@ -58,7 +95,7 @@ class ViewController: UIViewController {
                         self.data_TableView.reloadData()
                     }
                     
-//                    self.removeActivityIndicator()
+                    self.removeActivityIndicator()
                 } catch {
                     print("error----",error.localizedDescription)
                 }
