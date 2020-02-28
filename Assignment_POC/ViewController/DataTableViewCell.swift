@@ -2,7 +2,7 @@
 //  DataTableViewCell.swift
 //  Assignment_POC
 //
-//  Created by Deep on 26/02/20.
+//  Created by Pooja on 26/02/20.
 //  Copyright © 2020 Pooja. All rights reserved.
 //
 
@@ -31,7 +31,7 @@ class DataTableViewCell: UITableViewCell {
           product_ImageView.topAnchor.constraint(equalTo: marginGuide.topAnchor).isActive = true
 
           // configure titleLabel
-          contentView.addSubview(tittle_Label )
+          contentView.addSubview(tittle_Label)
           tittle_Label .translatesAutoresizingMaskIntoConstraints = false
 
           tittle_Label .leadingAnchor.constraint(equalTo: product_ImageView.trailingAnchor, constant: 10).isActive = true
