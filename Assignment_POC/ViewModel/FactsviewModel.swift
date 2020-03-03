@@ -30,7 +30,6 @@ class FactsviewModel: NSObject {
                     let jsonData = try decoder.decode(Json_Data.self, from: response as! Data)
                     
                     DispatchQueue.main.async {
-//                        self.navigationItem.title = jsonData.title ?? ""
                         //---- get the Data in rows array
                         self.rowsArray = jsonData.rows ?? []
                         self.delegate?.updateAllFacts(navigationTitle: jsonData.title ?? "")

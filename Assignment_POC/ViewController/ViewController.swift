@@ -11,9 +11,8 @@ import SDWebImage
 
 class ViewController: UIViewController {
     
-    fileprivate let datacellReuseIdentifier = "DataTableViewCell"
-    fileprivate let data_TableView = UITableView()
-//    var rowsArray = [Rows]()
+     let datacellReuseIdentifier = "DataTableViewCell"
+     let data_TableView = UITableView()
     var activityIndicator = UIActivityIndicatorView()
     let factsViewModel = FactsviewModel()
     
@@ -26,6 +25,7 @@ class ViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(networkStatusChanged(notification:)), name: NSNotification.Name("Reachability"), object: nil)
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         factsViewModel.updateFacts()
@@ -34,7 +34,6 @@ class ViewController: UIViewController {
     
     func configureTableView() {
         data_TableView.dataSource = self
-        //        data_TableView.separatorStyle = .singleLine
         data_TableView.estimatedRowHeight = 100
         data_TableView.allowsSelection = false
         data_TableView.rowHeight = UITableView.automaticDimension
@@ -84,7 +83,7 @@ class ViewController: UIViewController {
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         print("\(#function) pullDownrefresh ")
-         factsViewModel.updateFacts()
+        factsViewModel.updateFacts()
         refreshControl.endRefreshing()
     }
     
@@ -92,7 +91,7 @@ class ViewController: UIViewController {
 
 //---- extension for UITableViewDataSource
 
-extension ViewController : UITableViewDataSource , UITableViewDelegate{
+extension ViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return factsViewModel.rowsArray.count
     }
@@ -100,32 +99,26 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: datacellReuseIdentifier, for: indexPath) as! DataTableViewCell
         
-        if let description = factsViewModel.rowsArray[indexPath.row].description {
-                   //Here you received string 'category'
-                   cell.description_Label.text = description
-               }
-        
-        if let tittle = factsViewModel.rowsArray[indexPath.row].title {
+//        if let description = factsViewModel.rowsArray[indexPath.row].description {
             //Here you received string 'category'
-            cell.tittle_Label.text = tittle
-        }
+            cell.description_Label.text = factsViewModel.rowsArray[indexPath.row].description
+//        }
+//        if let tittle = factsViewModel.rowsArray[indexPath.row].title {
+            //Here you received string 'category'"
+            cell.tittle_Label.text = factsViewModel.rowsArray[indexPath.row].title
+//        }
         
         DispatchQueue.main.async {
-           
+            
             let imgUrl = self.factsViewModel.rowsArray[indexPath.row].imageHref
-//            cell.product_ImageView.widthAnchor.constraint(equalToConstant: 0).isActive = true
-//            cell.product_ImageView.translatesAutoresizingMaskIntoConstraints = false
             //---- image downlaoded through sdWeb Image
-            if let imageUrl = imgUrl {
-//                cell.product_ImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
-//                cell.product_ImageView.translatesAutoresizingMaskIntoConstraints = false
-                cell.product_ImageView.sd_setImage(with: URL(string: imageUrl ), placeholderImage: UIImage(named: "placeholder"), options: SDWebImageOptions.refreshCached) { (image, error, type, url) in
-                              if error != nil {
-                                  print("failed to download \(String(describing: url))  error \(String(describing: error))")
-                              }
-                          }
-                   }
-          
+                //                cell.product_ImageView.translatesAutoresizingMaskIntoConstraints = false
+            cell.product_ImageView.sd_setImage(with: URL(string: imgUrl ?? "" ), placeholderImage: UIImage(named: "placeholder"), options: SDWebImageOptions.refreshCached) { (image, error, type, url) in
+                    if error != nil {
+                        print("failed to download \(String(describing: url))  error \(String(describing: error))")
+                    }
+                }
+            
         }
         return cell
     }
@@ -139,6 +132,8 @@ extension ViewController : UITableViewDataSource , UITableViewDelegate{
     }
     
 }
+
+//---extention of viewmodel
 
 extension ViewController : FactsViewModelProtocol {
     func updateAllFacts(navigationTitle: String) {
