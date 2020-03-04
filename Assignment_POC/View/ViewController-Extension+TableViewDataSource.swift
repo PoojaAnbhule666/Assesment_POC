@@ -19,7 +19,6 @@ extension ViewController : UITableViewDataSource {
             cell = DataTableViewCell.init(style: .default, reuseIdentifier: datacellReuseIdentifier)
         }
         cell?.dataViewModel = DataTableViewModel.init(countryInfoData: factsViewModel.rowsArray[indexPath.row])
-        
         cell?.layoutIfNeeded()
         cell?.layoutSubviews()
         return cell!

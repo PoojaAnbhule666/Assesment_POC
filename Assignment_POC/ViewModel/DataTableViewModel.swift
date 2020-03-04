@@ -2,14 +2,14 @@
 //  DataTableViewModel.swift
 //  Assignment_POC
 //
-//  Created by test on 04/03/20.
+//  Created by Pooja on 04/03/20.
 //  Copyright © 2020 Pooja. All rights reserved.
 //
 
 import UIKit
 
 class DataTableViewModel: NSObject {
-    var rowModel:Rows?
+    var rowModel: Rows?
     
     var titleString: String {
         return rowModel?.title ?? ""

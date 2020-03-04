@@ -2,16 +2,17 @@
 //  ViewController-Extension+FactsViewModelProtocol.swift
 //  Assignment_POC
 //
-//  Created by test on 04/03/20.
+//  Created by Pooja on 04/03/20.
 //  Copyright © 2020 Pooja. All rights reserved.
 //
 
 import Foundation
-
+import UIKit
 extension ViewController : FactsViewModelProtocol {
+    
     func updateAllFacts(navigationTitle: String) {
         self.navigationItem.title = navigationTitle
-        self.data_TableView.reloadData()
+        self.tableViewFacts.reloadData()
     }
     
     func showActivityIndicator() {
@@ -28,4 +29,8 @@ extension ViewController : FactsViewModelProtocol {
         }
     }
     
+    func showAlert(messageStr: String) {
+        self.showConnectionAlert(messageStr: messageStr)
+        
+    }
 }

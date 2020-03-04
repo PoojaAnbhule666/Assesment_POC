@@ -8,26 +8,27 @@
 
 import UIKit
 
-protocol FactsViewModelProtocol {
+protocol FactsViewModelProtocol: AnyObject {
     func updateAllFacts(navigationTitle:String)
     func showActivityIndicator()
     func removeActivityIndicator()
+    func showAlert(messageStr: String)
 }
 
 class FactsviewModel: NSObject {
-
-    var delegate: FactsViewModelProtocol?
+    
+    weak var delegate: FactsViewModelProtocol?
     var rowsArray = [Rows]()
     var factsService = FactsService()
     
     func updateFacts() {
         self.delegate?.showActivityIndicator()
-        factsService.apiCall() { (isSuccesfull, response) in
+        factsService.apiCall(){ (isSuccesfull, response) in
             
             if isSuccesfull {
                 do {
                     let decoder = JSONDecoder()
-                    let jsonData = try decoder.decode(Json_Data.self, from: response as! Data)
+                    let jsonData = try decoder.decode(FactsData.self, from: response as! Data)
                     
                     DispatchQueue.main.async {
                         //---- get the Data in rows array
@@ -37,7 +38,12 @@ class FactsviewModel: NSObject {
                     
                     self.delegate?.removeActivityIndicator()
                 } catch {
-                    print("error----",error.localizedDescription)
+                    print("error----", error.localizedDescription)
+                }
+            }else {
+                DispatchQueue.main.async {
+                    self.delegate?.showAlert(messageStr: response as! String)
+                    self.delegate?.removeActivityIndicator()
                 }
             }
         }

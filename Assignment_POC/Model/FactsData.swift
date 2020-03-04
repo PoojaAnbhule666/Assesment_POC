@@ -1,8 +1,7 @@
-
 import Foundation
-struct Json_Data : Codable {
-	let title : String?
-	let rows : [Rows]?
+struct FactsData: Codable {
+	let title: String?
+	let rows: [Rows]?
 
 	enum CodingKeys: String, CodingKey {
 

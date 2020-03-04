@@ -9,7 +9,7 @@
 import XCTest
 @testable import Assignment_POC
 
-class Assignment_POCTests: XCTestCase {
+class AssignmentPOCTests: XCTestCase {
     var viewControllerUnderTest: ViewController!
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.

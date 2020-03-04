@@ -27,6 +27,7 @@ class DataTableViewCell: UITableViewCell {
             }
         }
     }
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
@@ -46,7 +47,7 @@ class DataTableViewCell: UITableViewCell {
         lblTitle .translatesAutoresizingMaskIntoConstraints = false
         
         lblTitle .leadingAnchor.constraint(equalTo: imgProduct.trailingAnchor, constant: 10).isActive = true
-        lblTitle .topAnchor.constraint(equalTo: marginGuide.topAnchor,constant: 20).isActive = true
+        lblTitle .topAnchor.constraint(equalTo: marginGuide.topAnchor, constant: 20).isActive = true
         lblTitle .trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
         lblTitle .numberOfLines = 0
         lblTitle .font = UIFont(name: "AvenirNext-DemiBold", size: 16)
@@ -57,7 +58,7 @@ class DataTableViewCell: UITableViewCell {
         lblDescription.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor,constant: 10).isActive = true
         lblDescription.bottomAnchor.constraint(equalTo: marginGuide.bottomAnchor).isActive = true
         lblDescription.trailingAnchor.constraint(equalTo: marginGuide.trailingAnchor).isActive = true
-        lblDescription.topAnchor.constraint(equalTo: imgProduct.bottomAnchor,constant: 15).isActive = true
+        lblDescription.topAnchor.constraint(equalTo: imgProduct.bottomAnchor, constant: 15).isActive = true
         lblDescription.numberOfLines = 0
         lblDescription.font = UIFont(name: "Avenir-Book", size: 12)
         lblDescription.textColor = UIColor.gray

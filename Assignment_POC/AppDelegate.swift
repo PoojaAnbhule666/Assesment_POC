@@ -20,9 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
-    
     // MARK: Reachability methods
-    
     func setupReachability() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged(note:)), name: .reachabilityChanged, object: reachability)
@@ -34,45 +32,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     @objc func reachabilityChanged(note: Notification) {
-        let reachability = note.object as! Reachability
-        
-        switch reachability.connection {
+        let reachability = note.object as? Reachability
+        let notificationname = NSNotification.Name("Reachability")
+        switch reachability?.connection {
         case .wifi:
             networkIsConnected = true
             print("Reachable via WiFi")
-            NotificationCenter.default.post(name: NSNotification.Name("Reachability"), object: ["connection":"wifi"])
-            NotificationCenter.default.post(name: NSNotification.Name("Reachability"), object: nil, userInfo: ["connection":"wifi"])
-        //AppCommonData.showToast(title: nil, message: "Connected", view: UIApplication.shared.keyWindow!)
+            NotificationCenter.default.post(name: notificationname, object: ["connection": "wifi"])
+            NotificationCenter.default.post(name: notificationname, object: nil, userInfo: ["connection": "wifi"])
         case .cellular:
             networkIsConnected = true
             print("Reachable via Cellular")
-            NotificationCenter.default.post(name: NSNotification.Name("Reachability"), object: nil, userInfo: ["connection":"data"])
-        //AppCommonData.showToast(title: nil, message: "Connected", view: UIApplication.shared.keyWindow!)
+            NotificationCenter.default.post(name: notificationname, object: nil, userInfo: ["connection": "data"])
         case .none:
             networkIsConnected = false
             print("Network not reachable")
-            NotificationCenter.default.post(name: NSNotification.Name("Reachability"), object: nil, userInfo: ["connection":"lost"])
-        //AppCommonData.showToast(title: nil, message: "Lost network connection.", view: UIApplication.shared.keyWindow!)
+            NotificationCenter.default.post(name: notificationname, object: nil, userInfo: ["connection": "lost"])
         case .unavailable:
             networkIsConnected = false
             print("Network unavailable")
-            NotificationCenter.default.post(name: NSNotification.Name("Reachability"), object: nil, userInfo: ["connection":"lost"])
+            NotificationCenter.default.post(name: notificationname, object: nil, userInfo: ["connection": "lost"])
             
+        case .some(.none):
+            break
         }
     }
     
-    
     // MARK: UISceneSession Lifecycle
-    
     func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        
         return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }
     
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-        
     }
-    
     
 }
 

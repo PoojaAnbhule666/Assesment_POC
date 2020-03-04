@@ -7,13 +7,11 @@
 //
 
 import Foundation
-
-
 struct FactsService {
     
     //----  Get Api call request
     
-    func apiCall(completionBlock : @escaping (_ successful:Bool, _ responseData : Any) -> ()) {
+    func apiCall(completionBlock : @escaping (_ successful: Bool, _ responseData: Any) -> ()) {
         guard let url = URL(string: webServiceUrl) else { return }
         print("url is-->> \(url)")
         
@@ -25,12 +23,12 @@ struct FactsService {
                                               completionHandler: { (data, response, error) in
                                                 guard error == nil else {
                                                     print ("error: \(error!)")
-                                                    completionBlock(false,error ?? "error")
+                                                    completionBlock(false, error?.localizedDescription ?? "error")
                                                     return
                                                 }
                                                 
                                                 guard let content = data else {
-                                                    completionBlock(false,"error no data")
+                                                    completionBlock(false, "error no data")
                                                     return
                                                 }
                                                 // Convert Data to string using isoLatin2
@@ -38,13 +36,12 @@ struct FactsService {
                                                 let strData = String(data: content, encoding: .isoLatin2)
                                                 
                                                 guard let decodedData = strData?.data(using: .utf8) else {
-                                                    completionBlock(false,"error no data")
+                                                    completionBlock(false, "error no data")
                                                     return
                                                 }
-                                                completionBlock(true,decodedData)
+                                                completionBlock(true, decodedData)
         })
         dataTask.resume()
     }
-    
 }
 
