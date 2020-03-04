@@ -11,7 +11,7 @@ import SDWebImage
 
 class ViewController: UIViewController {
     
-     let datacellReuseIdentifier = "DataTableViewCell"
+     
      let data_TableView = UITableView()
     var activityIndicator = UIActivityIndicatorView()
     let factsViewModel = FactsviewModel()
@@ -113,7 +113,7 @@ extension ViewController : UITableViewDataSource {
             let imgUrl = self.factsViewModel.rowsArray[indexPath.row].imageHref
             //---- image downlaoded through sdWeb Image
                 //                cell.product_ImageView.translatesAutoresizingMaskIntoConstraints = false
-            cell.product_ImageView.sd_setImage(with: URL(string: imgUrl ?? "" ), placeholderImage: UIImage(named: "placeholder"), options: SDWebImageOptions.refreshCached) { (image, error, type, url) in
+            cell.product_ImageView.sd_setImage(with: URL(string: imgUrl ?? "" ), placeholderImage: UIImage(named: placeholderImage), options: SDWebImageOptions.refreshCached) { (image, error, type, url) in
                     if error != nil {
                         print("failed to download \(String(describing: url))  error \(String(describing: error))")
                     }

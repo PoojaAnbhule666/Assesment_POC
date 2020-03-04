@@ -14,7 +14,7 @@ struct FactsService {
     //----  Get Api call request
     
     func apiCall(completionBlock : @escaping (_ successful:Bool, _ responseData : Any) -> ()) {
-        guard let url = URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json") else { return }
+        guard let url = URL(string: webServiceUrl) else { return }
         print("url is-->> \(url)")
         
         // set up the session
