@@ -22,6 +22,7 @@
 		52BF0550240F767100EEDA1E /* ViewController-Extension+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF054F240F767100EEDA1E /* ViewController-Extension+TableViewDataSource.swift */; };
 		52BF0552240F780B00EEDA1E /* ViewController-Extension+FactsViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF0551240F780B00EEDA1E /* ViewController-Extension+FactsViewModelProtocol.swift */; };
 		52BF0554240F7B1900EEDA1E /* ViewController-Extension+TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF0553240F7B1900EEDA1E /* ViewController-Extension+TableViewDelegate.swift */; };
+		52BF0556240F7FA500EEDA1E /* DataTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF0555240F7FA500EEDA1E /* DataTableViewModel.swift */; };
 		52CEC8CF2408DFAB00550C25 /* FactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CEC8CE2408DFAB00550C25 /* FactsService.swift */; };
 		52CEC8D22408E20400550C25 /* FactsviewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CEC8D12408E20400550C25 /* FactsviewModel.swift */; };
 		E6FD166ED1CF4020BA89F9DB /* Pods_Assignment_POCTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C9479EF9CBA9E017A456313 /* Pods_Assignment_POCTests.framework */; };
@@ -59,6 +60,7 @@
 		52BF054F240F767100EEDA1E /* ViewController-Extension+TableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController-Extension+TableViewDataSource.swift"; sourceTree = "<group>"; };
 		52BF0551240F780B00EEDA1E /* ViewController-Extension+FactsViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController-Extension+FactsViewModelProtocol.swift"; sourceTree = "<group>"; };
 		52BF0553240F7B1900EEDA1E /* ViewController-Extension+TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController-Extension+TableViewDelegate.swift"; sourceTree = "<group>"; };
+		52BF0555240F7FA500EEDA1E /* DataTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewModel.swift; sourceTree = "<group>"; };
 		52CEC8CE2408DFAB00550C25 /* FactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsService.swift; sourceTree = "<group>"; };
 		52CEC8D12408E20400550C25 /* FactsviewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactsviewModel.swift; sourceTree = "<group>"; };
 		5D1D753F17D79C2241F3B6E2 /* Pods-Assignment_POCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment_POCTests.release.xcconfig"; path = "Target Support Files/Pods-Assignment_POCTests/Pods-Assignment_POCTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 		144617AB24064722000056B0 /* Assignment_POC */ = {
 			isa = PBXGroup;
 			children = (
+				52BF0557240F84EB00EEDA1E /* Appconstants */,
 				144617D32406593E000056B0 /* View */,
 				52CEC8D02408E18D00550C25 /* ViewModel */,
 				52CEC8CD2408DF6900550C25 /* Service */,
@@ -119,7 +122,6 @@
 				144617B52406472B000056B0 /* Assets.xcassets */,
 				144617B72406472B000056B0 /* LaunchScreen.storyboard */,
 				144617BA2406472B000056B0 /* Info.plist */,
-				52BF054D240F737D00EEDA1E /* AppConstants.swift */,
 			);
 			path = Assignment_POC;
 			sourceTree = "<group>";
@@ -154,6 +156,14 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		52BF0557240F84EB00EEDA1E /* Appconstants */ = {
+			isa = PBXGroup;
+			children = (
+				52BF054D240F737D00EEDA1E /* AppConstants.swift */,
+			);
+			path = Appconstants;
+			sourceTree = "<group>";
+		};
 		52CEC8CD2408DF6900550C25 /* Service */ = {
 			isa = PBXGroup;
 			children = (
@@ -166,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				52CEC8D12408E20400550C25 /* FactsviewModel.swift */,
+				52BF0555240F7FA500EEDA1E /* DataTableViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -365,6 +376,7 @@
 				52BF0550240F767100EEDA1E /* ViewController-Extension+TableViewDataSource.swift in Sources */,
 				52BF0554240F7B1900EEDA1E /* ViewController-Extension+TableViewDelegate.swift in Sources */,
 				52CEC8CF2408DFAB00550C25 /* FactsService.swift in Sources */,
+				52BF0556240F7FA500EEDA1E /* DataTableViewModel.swift in Sources */,
 				144617D124065872000056B0 /* Json_Data.swift in Sources */,
 				52CEC8D22408E20400550C25 /* FactsviewModel.swift in Sources */,
 				144617AD24064722000056B0 /* AppDelegate.swift in Sources */,

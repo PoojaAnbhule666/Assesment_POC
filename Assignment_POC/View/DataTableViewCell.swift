@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SDWebImage
 
 class DataTableViewCell: UITableViewCell {
     
@@ -15,6 +16,17 @@ class DataTableViewCell: UITableViewCell {
     let imgProduct = UIImageView()
     
     // MARK: Initalizers
+    var dataViewModel: DataTableViewModel? {
+        didSet {
+            lblTitle.text = dataViewModel?.titleString
+            lblDescription.text = dataViewModel?.desctiptionString
+            imgProduct.sd_setImage(with: dataViewModel?.imageHrefUrl, placeholderImage: UIImage(named: placeholderImage), options: SDWebImageOptions.refreshCached) { (image, error, type, url) in
+                if error != nil {
+                    print("failed to download \(String(describing: url))  error \(String(describing: error))")
+                }
+            }
+        }
+    }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         

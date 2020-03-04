@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 
 extension ViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -15,23 +14,15 @@ extension ViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: datacellReuseIdentifier, for: indexPath) as! DataTableViewCell
-        
-        cell.lblDescription.text = factsViewModel.rowsArray[indexPath.row].description
-        cell.lblTitle.text = factsViewModel.rowsArray[indexPath.row].title
-        DispatchQueue.main.async {
-            
-            let imgUrl = self.factsViewModel.rowsArray[indexPath.row].imageHref
-            //---- image downlaoded through sdWeb Image
-            
-            cell.imgProduct.sd_setImage(with: URL(string: imgUrl ?? "" ), placeholderImage: UIImage(named: placeholderImage), options: SDWebImageOptions.refreshCached) { (image, error, type, url) in
-                if error != nil {
-                    print("failed to download \(String(describing: url))  error \(String(describing: error))")
-                }
-            }
-            
+        var cell:DataTableViewCell? = tableView.dequeueReusableCell(withIdentifier: datacellReuseIdentifier, for: indexPath) as? DataTableViewCell
+        if cell == nil {
+            cell = DataTableViewCell.init(style: .default, reuseIdentifier: datacellReuseIdentifier)
         }
-        return cell
+        cell?.dataViewModel = DataTableViewModel.init(countryInfoData: factsViewModel.rowsArray[indexPath.row])
+        
+        cell?.layoutIfNeeded()
+        cell?.layoutSubviews()
+        return cell!
     }
     
 }
