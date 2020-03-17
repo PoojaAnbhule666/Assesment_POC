@@ -8,20 +8,20 @@
 
 import UIKit
 
-extension ViewController : UITableViewDataSource {
+extension ViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return factsViewModel.rowsArray.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell:DataTableViewCell? = tableView.dequeueReusableCell(withIdentifier: datacellReuseIdentifier, for: indexPath) as? DataTableViewCell
-        if cell == nil {
-            cell = DataTableViewCell.init(style: .default, reuseIdentifier: datacellReuseIdentifier)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: datacellId, for: indexPath) as? DataTblCell else {
+            return DataTblCell.init(style: .default, reuseIdentifier: datacellId)
         }
-        cell?.dataViewModel = DataTableViewModel.init(countryInfoData: factsViewModel.rowsArray[indexPath.row])
-        cell?.layoutIfNeeded()
-        cell?.layoutSubviews()
-        return cell!
+//        if cell == nil {
+//            cell = DataTableViewCell.init(style: .default, reuseIdentifier: datacellReuseIdentifier)
+//        }
+        cell.dataViewModel = DataTableViewModel.init(countryInfoData: factsViewModel.rowsArray[indexPath.row])
+        cell.layoutIfNeeded()
+        cell.layoutSubviews()
+        return cell
     }
-    
 }

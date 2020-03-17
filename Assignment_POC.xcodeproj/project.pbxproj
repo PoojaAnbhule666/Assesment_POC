@@ -16,7 +16,7 @@
 		144617C42406472B000056B0 /* AssignmentPOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617C32406472B000056B0 /* AssignmentPOCTests.swift */; };
 		144617D124065872000056B0 /* FactsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617CF24065872000056B0 /* FactsData.swift */; };
 		144617D224065872000056B0 /* Rows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617D024065872000056B0 /* Rows.swift */; };
-		144617D524065984000056B0 /* DataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617D424065984000056B0 /* DataTableViewCell.swift */; };
+		144617D524065984000056B0 /* DataTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617D424065984000056B0 /* DataTblCell.swift */; };
 		1FF0A85961DAAFA7838A5142 /* Pods_Assignment_POC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14B6025F65B99CB3ABD3A41 /* Pods_Assignment_POC.framework */; };
 		52BF054E240F737D00EEDA1E /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF054D240F737D00EEDA1E /* AppConstants.swift */; };
 		52BF0550240F767100EEDA1E /* ViewController-Extension+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF054F240F767100EEDA1E /* ViewController-Extension+TableViewDataSource.swift */; };
@@ -52,7 +52,7 @@
 		144617C52406472B000056B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		144617CF24065872000056B0 /* FactsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactsData.swift; sourceTree = "<group>"; };
 		144617D024065872000056B0 /* Rows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rows.swift; sourceTree = "<group>"; };
-		144617D424065984000056B0 /* DataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTableViewCell.swift; sourceTree = "<group>"; };
+		144617D424065984000056B0 /* DataTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTblCell.swift; sourceTree = "<group>"; };
 		420DFECFC1D4B63DF7F7BBBC /* Pods-Assignment_POC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment_POC.release.xcconfig"; path = "Target Support Files/Pods-Assignment_POC/Pods-Assignment_POC.release.xcconfig"; sourceTree = "<group>"; };
 		4C9479EF9CBA9E017A456313 /* Pods_Assignment_POCTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Assignment_POCTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5204B3E08BCAE9DCACE6700C /* Pods-Assignment_POCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment_POCTests.debug.xcconfig"; path = "Target Support Files/Pods-Assignment_POCTests/Pods-Assignment_POCTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -148,7 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				144617B024064722000056B0 /* ViewController.swift */,
-				144617D424065984000056B0 /* DataTableViewCell.swift */,
+				144617D424065984000056B0 /* DataTblCell.swift */,
 				52BF054F240F767100EEDA1E /* ViewController-Extension+TableViewDataSource.swift */,
 				52BF0551240F780B00EEDA1E /* ViewController-Extension+FactsViewModelProtocol.swift */,
 				52BF0553240F7B1900EEDA1E /* ViewController-Extension+TableViewDelegate.swift */,
@@ -213,6 +213,7 @@
 				144617A624064722000056B0 /* Frameworks */,
 				144617A724064722000056B0 /* Resources */,
 				C3AAB8CC526DF9541F1C5DB7 /* [CP] Embed Pods Frameworks */,
+				141C30B02420D55C00015643 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -301,6 +302,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		141C30B02420D55C00015643 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
 		4621C79AB167BE0545742BD7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -372,7 +390,7 @@
 				144617B124064722000056B0 /* ViewController.swift in Sources */,
 				52BF0552240F780B00EEDA1E /* ViewController-Extension+FactsViewModelProtocol.swift in Sources */,
 				52BF054E240F737D00EEDA1E /* AppConstants.swift in Sources */,
-				144617D524065984000056B0 /* DataTableViewCell.swift in Sources */,
+				144617D524065984000056B0 /* DataTblCell.swift in Sources */,
 				52BF0550240F767100EEDA1E /* ViewController-Extension+TableViewDataSource.swift in Sources */,
 				52BF0554240F7B1900EEDA1E /* ViewController-Extension+TableViewDelegate.swift in Sources */,
 				52CEC8CF2408DFAB00550C25 /* FactsService.swift in Sources */,

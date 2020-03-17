@@ -8,7 +8,6 @@
 
 import Foundation
 
-let datacellReuseIdentifier = "DataTableViewCell"
+let datacellId = "DataTableViewCell"
 let placeholderImage = "placeholder"
 let webServiceUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"
-

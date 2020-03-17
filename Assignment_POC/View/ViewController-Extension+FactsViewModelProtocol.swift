@@ -8,29 +8,26 @@
 
 import Foundation
 import UIKit
-extension ViewController : FactsViewModelProtocol {
-    
+extension ViewController: FactsViewModelProtocol {
+    /**when webservice call data is updated then update tableview using this method*/
     func updateAllFacts(navigationTitle: String) {
         self.navigationItem.title = navigationTitle
         self.tableViewFacts.reloadData()
     }
-    
+    /**show activity indicator when webservice is call.*/
     func showActivityIndicator() {
         self.activityIndicator.center = self.view.center
         activityIndicator.startAnimating()
         self.view.addSubview(activityIndicator)
     }
-    
+    /**after  webservice response getting then remove activityindicator.*/
     func removeActivityIndicator() {
         DispatchQueue.main.async {
             self.activityIndicator.stopAnimating()
             self.activityIndicator.removeFromSuperview()
-            
         }
     }
-    
     func showAlert(messageStr: String) {
         self.showConnectionAlert(messageStr: messageStr)
-        
     }
 }

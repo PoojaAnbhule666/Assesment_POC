@@ -6,9 +6,9 @@ struct Rows: Codable {
 
 	enum CodingKeys: String, CodingKey {
 
-		case title = "title"
-		case description = "description"
-		case imageHref = "imageHref"
+		case title
+		case description
+		case imageHref 
 	}
 
 	init(from decoder: Decoder) throws {

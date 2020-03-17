@@ -8,18 +8,18 @@
 
 import UIKit
 
-extension ViewController : UITableViewDelegate {
-    
+extension ViewController: UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if factsViewModel.rowsArray[indexPath.row].description == nil && factsViewModel.rowsArray[indexPath.row].title == nil &&  factsViewModel.rowsArray[indexPath.row].imageHref == nil {
+        let descriptionStr = factsViewModel.rowsArray[indexPath.row].description
+        let titleStr = factsViewModel.rowsArray[indexPath.row].title
+        let imgRef = factsViewModel.rowsArray[indexPath.row].imageHref
+        if descriptionStr == nil && titleStr == nil &&  imgRef == nil {
             return 0
         } else {
             return  UITableView.automaticDimension
         }
     }
-    
 }

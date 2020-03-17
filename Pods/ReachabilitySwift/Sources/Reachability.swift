@@ -37,7 +37,7 @@ public enum ReachabilityError: Error {
 }
 
 @available(*, unavailable, renamed: "Notification.Name.reachabilityChanged")
-public let ReachabilityChangedNotification = NSNotification.Name("ReachabilityChangedNotification")
+public let reachabilityChangedNotification = NSNotification.Name("ReachabilityChangedNotification")
 
 public extension Notification.Name {
     static let reachabilityChanged = Notification.Name("reachabilityChanged")
@@ -100,7 +100,6 @@ public class Reachability {
         if flags == nil {
             try? setReachabilityFlags()
         }
-        
         switch flags?.connection {
         case .unavailable?, nil: return .unavailable
         case .none?: return .unavailable
@@ -262,12 +261,9 @@ fileprivate extension Reachability {
                 self.stopNotifier()
                 throw ReachabilityError.unableToGetFlags(SCError())
             }
-            
             self.flags = flags
         }
     }
-    
-
     func notifyReachabilityChanged() {
         let notify = { [weak self] in
             guard let self = self else { return }
@@ -350,17 +346,16 @@ extension SCNetworkReachabilityFlags {
     }
 
     var description: String {
-        let W = isOnWWANFlagSet ? "W" : "-"
-        let R = isReachableFlagSet ? "R" : "-"
-        let c = isConnectionRequiredFlagSet ? "c" : "-"
-        let t = isTransientConnectionFlagSet ? "t" : "-"
-        let i = isInterventionRequiredFlagSet ? "i" : "-"
-        let C = isConnectionOnTrafficFlagSet ? "C" : "-"
-        let D = isConnectionOnDemandFlagSet ? "D" : "-"
-        let l = isLocalAddressFlagSet ? "l" : "-"
-        let d = isDirectFlagSet ? "d" : "-"
-
-        return "\(W)\(R) \(c)\(t)\(i)\(C)\(D)\(l)\(d)"
+        let onWWANFlag = isOnWWANFlagSet ? "W" : "-"
+        let reachableFlag = isReachableFlagSet ? "R" : "-"
+        let connectionRequiredFlag = isConnectionRequiredFlagSet ? "c" : "-"
+        let transientConnectionFlag = isTransientConnectionFlagSet ? "t" : "-"
+        let interventionRequiredFlag = isInterventionRequiredFlagSet ? "i" : "-"
+        let connectionOnTrafficFlag = isConnectionOnTrafficFlagSet ? "C" : "-"
+        let demandFlag = isConnectionOnDemandFlagSet ? "D" : "-"
+        let localAddressFlag = isLocalAddressFlagSet ? "l" : "-"
+        let directFlag = isDirectFlagSet ? "d" : "-"
+       return "\(onWWANFlag)\(reachableFlag)\(connectionRequiredFlag)\(transientConnectionFlag)\(interventionRequiredFlag)\(connectionOnTrafficFlag)\(demandFlag)\(localAddressFlag)\(directFlag)"
     }
 }
 

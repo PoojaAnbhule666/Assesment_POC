@@ -5,8 +5,8 @@ struct FactsData: Codable {
 
 	enum CodingKeys: String, CodingKey {
 
-		case title = "title"
-		case rows = "rows"
+		case title
+		case rows 
 	}
 
 	init(from decoder: Decoder) throws {
