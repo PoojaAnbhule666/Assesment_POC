@@ -18,11 +18,15 @@ protocol FactsViewModelProtocol: AnyObject {
 class FactsviewModel: NSObject {
     weak var delegate: FactsViewModelProtocol?
     var rowsArray = [Rows]()
-    var factsService = FactsService()
+//    private var factsService = FactsService()
+    let apiService: APIServiceProtocol
     /**update method for webservice call data updates and tableview updated when service call.*/
+    init( apiService: APIServiceProtocol = APIService()) {
+        self.apiService = apiService
+    }
     func updateFacts() {
         self.delegate?.showActivityIndicator()
-        factsService.apiCall { (isSuccesfull, response) in
+        apiService.apiCall { (isSuccesfull, response) in
             if isSuccesfull {
                 do {
                     let decoder = JSONDecoder()
@@ -42,8 +46,8 @@ class FactsviewModel: NSObject {
             } else {
                 DispatchQueue.main.async {
                     guard let responseString = response as? String else {
-                                           return
-                                       }
+                        return
+                    }
                     self.delegate?.showAlert(messageStr: responseString)
                     self.delegate?.removeActivityIndicator()
                 }

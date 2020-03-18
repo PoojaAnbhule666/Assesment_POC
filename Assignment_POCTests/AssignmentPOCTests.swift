@@ -25,38 +25,19 @@ class AssignmentPOCTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
-    func testPerformanceExample() {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
     func testHasATableView() {
-        XCTAssertNotNil(viewControllerUnderTest.tableViewFacts )
+        XCTAssertNotNil(viewControllerUnderTest.tableViewFacts)
     }
     func testTableViewHasDataSource() {
         XCTAssertNotNil(viewControllerUnderTest.tableViewFacts.dataSource)
+    }
+    func testTableViewHasDelegater() {
+        XCTAssertNotNil(viewControllerUnderTest.tableViewFacts.delegate)
     }
     func testTableViewConformsToTableViewDataSourceProtocol() {
         XCTAssertTrue(viewControllerUnderTest.conforms(to: UITableViewDataSource.self))
         XCTAssertTrue(viewControllerUnderTest.responds(to: #selector(viewControllerUnderTest.tableView(_:numberOfRowsInSection:))))
         XCTAssertTrue(viewControllerUnderTest.responds(to: #selector(viewControllerUnderTest.tableView(_:cellForRowAt:))))
     }
-    func testDownloadWebData() {
-        // Create an expectation for a background download task.
-        let expectation = XCTestExpectation(description: "Download Facts")
-        // Create a URL for a web page to be downloaded.
-        let url = URL(string: "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json")!
-        // Create a background task to download the web page.
-        let dataTask = URLSession.shared.dataTask(with: url) { (data, _, _) in
-            // Make sure we downloaded some data.
-            XCTAssertNotNil(data, "No data was downloaded.")
-            // Fulfill the expectation to indicate that the background task has finished successfully.
-            expectation.fulfill()
-        }
-        // Start the download task.
-        dataTask.resume()
-        // Wait until the expectation is fulfilled, with a timeout of 10 seconds.
-        wait(for: [expectation], timeout: 10.0)
-    }
+
 }

@@ -16,9 +16,6 @@ extension ViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: datacellId, for: indexPath) as? DataTblCell else {
             return DataTblCell.init(style: .default, reuseIdentifier: datacellId)
         }
-//        if cell == nil {
-//            cell = DataTableViewCell.init(style: .default, reuseIdentifier: datacellReuseIdentifier)
-//        }
         cell.dataViewModel = DataTableViewModel.init(countryInfoData: factsViewModel.rowsArray[indexPath.row])
         cell.layoutIfNeeded()
         cell.layoutSubviews()

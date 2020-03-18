@@ -12,7 +12,7 @@ import Reachability
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var networkIsConnected = false
-    let reachability = try? Reachability()
+    private let reachability = try? Reachability()
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         setupReachability()
         return true
