@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+
 extension FactViewController: FactsViewModelProtocol {
     /**when webservice call data is updated then update tableview using this method*/
     func updateAllFacts(navigationTitle: String) {

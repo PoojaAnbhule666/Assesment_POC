@@ -16,17 +16,18 @@ protocol FactsViewModelProtocol: AnyObject {
 }
 
 class FactsviewModel: NSObject {
+    
     weak var delegate: FactsViewModelProtocol?
     var rowsArray = [Rows]()
-    let factService: APIServiceProtocol
+    let apiService: APIServiceProtocol
     
     /**update method for webservice call data updates and tableview updated when service call.*/
     init( apiService: APIServiceProtocol = FactsService()) {
-        self.factService = apiService
+        self.apiService = apiService
     }
     func updateFacts() {
         self.delegate?.showActivityIndicator()
-        factService.apiCall { (isSuccesfull, response) in
+        apiService.apiCall { (isSuccesfull, response) in
             if isSuccesfull {
                 do {
                     let decoder = JSONDecoder()
@@ -38,8 +39,9 @@ class FactsviewModel: NSObject {
                         //---- get the Data in rows array
                         self.rowsArray = jsonData.rows ?? []
                         self.delegate?.updateAllFacts(navigationTitle: jsonData.title ?? "")
+                        self.delegate?.removeActivityIndicator()
                     }
-                    self.delegate?.removeActivityIndicator()
+                    
                 } catch {
                     print("error----", error.localizedDescription)
                 }

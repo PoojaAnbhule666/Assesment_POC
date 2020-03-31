@@ -7,9 +7,11 @@
 //
 
 import Foundation
+
 protocol APIServiceProtocol {
     func apiCall(completionBlock : @escaping (_ successful: Bool, _ responseData: Any) -> ())
 }
+
 class FactsService: APIServiceProtocol{
     /**get api call request*/
        func apiCall(completionBlock : @escaping (_ successful: Bool, _ responseData: Any) -> ()) {

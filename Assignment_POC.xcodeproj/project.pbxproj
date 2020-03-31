@@ -17,6 +17,7 @@
 		144617D124065872000056B0 /* FactsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617CF24065872000056B0 /* FactsData.swift */; };
 		144617D224065872000056B0 /* Rows.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617D024065872000056B0 /* Rows.swift */; };
 		144617D524065984000056B0 /* DataTblCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617D424065984000056B0 /* DataTblCell.swift */; };
+		189E3D4224331D7700068153 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 189E3D4124331D7700068153 /* SceneDelegate.swift */; };
 		1FF0A85961DAAFA7838A5142 /* Pods_Assignment_POC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D14B6025F65B99CB3ABD3A41 /* Pods_Assignment_POC.framework */; };
 		52BF054E240F737D00EEDA1E /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF054D240F737D00EEDA1E /* AppConstants.swift */; };
 		52BF0550240F767100EEDA1E /* FactViewController-Extension+TableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52BF054F240F767100EEDA1E /* FactViewController-Extension+TableViewDataSource.swift */; };
@@ -53,6 +54,7 @@
 		144617CF24065872000056B0 /* FactsData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactsData.swift; sourceTree = "<group>"; };
 		144617D024065872000056B0 /* Rows.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rows.swift; sourceTree = "<group>"; };
 		144617D424065984000056B0 /* DataTblCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTblCell.swift; sourceTree = "<group>"; };
+		189E3D4124331D7700068153 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		420DFECFC1D4B63DF7F7BBBC /* Pods-Assignment_POC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment_POC.release.xcconfig"; path = "Target Support Files/Pods-Assignment_POC/Pods-Assignment_POC.release.xcconfig"; sourceTree = "<group>"; };
 		4C9479EF9CBA9E017A456313 /* Pods_Assignment_POCTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Assignment_POCTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5204B3E08BCAE9DCACE6700C /* Pods-Assignment_POCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Assignment_POCTests.debug.xcconfig"; path = "Target Support Files/Pods-Assignment_POCTests/Pods-Assignment_POCTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				144617CE24065768000056B0 /* Model */,
 				52CEC8CD2408DF6900550C25 /* Service */,
 				144617AC24064722000056B0 /* AppDelegate.swift */,
+				189E3D4124331D7700068153 /* SceneDelegate.swift */,
 				144617B224064722000056B0 /* Main.storyboard */,
 				144617B52406472B000056B0 /* Assets.xcassets */,
 				144617B72406472B000056B0 /* LaunchScreen.storyboard */,
@@ -377,6 +380,7 @@
 				52BF0554240F7B1900EEDA1E /* FactViewController-Extension+TableViewDelegate.swift in Sources */,
 				52CEC8CF2408DFAB00550C25 /* FactsService.swift in Sources */,
 				52BF0556240F7FA500EEDA1E /* DataTableViewModel.swift in Sources */,
+				189E3D4224331D7700068153 /* SceneDelegate.swift in Sources */,
 				144617D124065872000056B0 /* FactsData.swift in Sources */,
 				52CEC8D22408E20400550C25 /* FactsviewModel.swift in Sources */,
 				144617AD24064722000056B0 /* AppDelegate.swift in Sources */,

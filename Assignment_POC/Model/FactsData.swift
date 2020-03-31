@@ -1,5 +1,7 @@
 import Foundation
+
 struct FactsData: Codable {
+    
 	let title: String?
 	let rows: [Rows]?
 

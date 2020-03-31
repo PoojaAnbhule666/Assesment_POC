@@ -17,8 +17,10 @@ extension FactViewController: UITableViewDataSource {
             return DataTblCell.init(style: .default, reuseIdentifier: datacellId)
         }
         cell.dataViewModel = DataTableViewModel.init(countryInfoData: factsViewModel.rowsArray[indexPath.row])
+        
+        cell.setNeedsLayout()
         cell.layoutIfNeeded()
-        cell.layoutSubviews()
+    
         return cell
     }
 }
