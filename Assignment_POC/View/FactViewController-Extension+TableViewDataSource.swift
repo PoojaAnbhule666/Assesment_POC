@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ViewController: UITableViewDataSource {
+extension FactViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return factsViewModel.rowsArray.count
     }

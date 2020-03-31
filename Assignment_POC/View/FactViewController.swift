@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FactViewController: UIViewController {
     let tableViewFacts = UITableView()
     var activityIndicator = UIActivityIndicatorView()
     let factsViewModel = FactsviewModel()
@@ -47,7 +47,7 @@ class ViewController: UIViewController {
             if connectionStatus != "lost" {
             } else {
                 DispatchQueue.main.async {
-                    self.showConnectionAlert(messageStr: "The Internet connection appears to be offline.")
+                    self.showConnectionAlert(messageStr: "Unable to connect to the internet.")
                 }
             }
         }

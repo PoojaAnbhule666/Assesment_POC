@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension ViewController: UITableViewDelegate {
+extension FactViewController: UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
