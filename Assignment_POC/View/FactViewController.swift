@@ -47,6 +47,7 @@ class FactViewController: UIViewController {
             if connectionStatus != "lost" {
             } else {
                 DispatchQueue.main.async {
+                    
                     self.showConnectionAlert(messageStr: "Unable to connect to the internet.")
                 }
             }
@@ -73,5 +74,9 @@ class FactViewController: UIViewController {
         print("\(#function) pullDownrefresh ")
         factsViewModel.updateFacts()
         refreshControl.endRefreshing()
+    }
+    
+    func reloadController()  {
+        self.tableViewFacts.reloadData()
     }
 }

@@ -13,6 +13,7 @@ protocol FactsViewModelProtocol: AnyObject {
     func showActivityIndicator()
     func removeActivityIndicator()
     func showAlert(messageStr: String)
+    func reloadController()
 }
 
 class FactsviewModel: NSObject {
@@ -50,8 +51,10 @@ class FactsviewModel: NSObject {
                     guard let responseString = response as? String else {
                         return
                     }
-                    self.delegate?.showAlert(messageStr: responseString)
+                    self.delegate?.reloadController()
+                    self.delegate?.showAlert(messageStr: "server error occured")
                     self.delegate?.removeActivityIndicator()
+                    
                 }
             }
         }
