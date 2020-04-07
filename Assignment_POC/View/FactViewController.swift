@@ -12,6 +12,7 @@ class FactViewController: UIViewController {
     let tableViewFacts = UITableView()
     var activityIndicator = UIActivityIndicatorView()
     let factsViewModel = FactsviewModel()
+    var refreshCntrl = UIRefreshControl()
     lazy var refreshControl:UIRefreshControl = {
         let refreshControl = UIRefreshControl()
                refreshControl.addTarget(self, action:
@@ -72,20 +73,16 @@ class FactViewController: UIViewController {
     }
     /**when refreshcontroller is added then pull down to refresh  and call url and update data in tableview.*/
     func pullDownrefresh() {
-        let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action:
-            #selector(handleRefresh(_:)),
-                                 for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.lightGray
-        self.tableViewFacts.addSubview(refreshControl)
+                self.tableViewFacts.refreshControl = refreshCntrl
+        refreshCntrl.addTarget(self, action:
+                   #selector(handleRefresh(_:)),
+                                        for: UIControl.Event.valueChanged)
+               refreshCntrl.tintColor = UIColor.lightGray
     }
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         print("\(#function) pullDownrefresh ")
         factsViewModel.updateFacts()
-        DispatchQueue.main.async {
-        refreshControl.endRefreshing()
-        }
-    }
+        refreshControl.endRefreshing()    }
     
     func reloadController()  {
         self.tableViewFacts.reloadData()
