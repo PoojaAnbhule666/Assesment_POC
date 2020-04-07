@@ -10,11 +10,10 @@ import XCTest
 @testable import Assignment_POC
 
 class AssignmentPOCTests: XCTestCase {
-    var viewControllerUnderTest: ViewController!
+    var viewControllerUnderTest: FactViewController!
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        self.viewControllerUnderTest = storyboard.instantiateViewController(withIdentifier: "ViewController") as? ViewController
+        self.viewControllerUnderTest = FactViewController()
         self.viewControllerUnderTest.loadView()
         self.viewControllerUnderTest.viewDidLoad()
     }
