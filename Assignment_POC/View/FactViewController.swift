@@ -12,11 +12,20 @@ class FactViewController: UIViewController {
     let tableViewFacts = UITableView()
     var activityIndicator = UIActivityIndicatorView()
     let factsViewModel = FactsviewModel()
+    lazy var refreshControl:UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+               refreshControl.addTarget(self, action:
+                   #selector(handleRefresh(_:)),
+                                        for: UIControl.Event.valueChanged)
+               refreshControl.tintColor = UIColor.lightGray
+        return refreshControl
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         factsViewModel.delegate = self
         configureTableView()
-        pullDownrefresh()
+         self.tableViewFacts.addSubview(refreshControl)
+//        pullDownrefresh()
         let notifCentre = NotificationCenter.default
         let notifName = NSNotification.Name("Reachability")
         notifCentre.addObserver(self, selector: #selector(nwStatusChanged(notification:)), name: notifName, object: nil)
@@ -68,12 +77,14 @@ class FactViewController: UIViewController {
             #selector(handleRefresh(_:)),
                                  for: UIControl.Event.valueChanged)
         refreshControl.tintColor = UIColor.lightGray
-        self.tableViewFacts.insertSubview(refreshControl, at: 0)
+        self.tableViewFacts.addSubview(refreshControl)
     }
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         print("\(#function) pullDownrefresh ")
         factsViewModel.updateFacts()
+        DispatchQueue.main.async {
         refreshControl.endRefreshing()
+        }
     }
     
     func reloadController()  {
