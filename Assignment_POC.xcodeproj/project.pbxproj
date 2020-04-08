@@ -90,13 +90,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1431C1B6243D928B004D9DEC /* Connection */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Connection;
-			sourceTree = "<group>";
-		};
 		144617A024064722000056B0 = {
 			isa = PBXGroup;
 			children = (
@@ -120,7 +113,6 @@
 		144617AB24064722000056B0 /* Assignment_POC */ = {
 			isa = PBXGroup;
 			children = (
-				1431C1B6243D928B004D9DEC /* Connection */,
 				52BF0557240F84EB00EEDA1E /* Appconstants */,
 				144617D32406593E000056B0 /* View */,
 				52CEC8D02408E18D00550C25 /* ViewModel */,
