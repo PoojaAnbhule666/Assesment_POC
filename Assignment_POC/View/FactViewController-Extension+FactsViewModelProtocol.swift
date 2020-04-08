@@ -31,4 +31,11 @@ extension FactViewController: FactsViewModelProtocol {
     func showAlert(messageStr: String) {
         self.showConnectionAlert(messageStr: messageStr)
     }
+    func reloadcontroller() {
+        self.tableViewFacts.reloadData()
+        if refreshControl.isRefreshing
+        {
+            self.refreshControl.endRefreshing()
+        }
+    }
 }

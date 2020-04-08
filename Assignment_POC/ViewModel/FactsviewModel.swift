@@ -13,7 +13,7 @@ protocol FactsViewModelProtocol: AnyObject {
     func showActivityIndicator()
     func removeActivityIndicator()
     func showAlert(messageStr: String)
-    func reloadController()
+    func reloadcontroller()
 }
 
 class FactsviewModel: NSObject {
@@ -21,13 +21,22 @@ class FactsviewModel: NSObject {
     weak var delegate: FactsViewModelProtocol?
     var rowsArray = [Rows]()
     let apiService: APIServiceProtocol
-    
+    private let network = NetworkManager.sharedInstance
     /**update method for webservice call data updates and tableview updated when service call.*/
     init( apiService: APIServiceProtocol = FactsService()) {
         self.apiService = apiService
     }
     func updateFacts() {
-        self.delegate?.showActivityIndicator()
+        network.reachability.whenUnreachable = { reachability in
+            DispatchQueue.main.async {
+             self.delegate?.removeActivityIndicator()
+            }
+                          self.delegate?.showAlert(messageStr: "Unable to connect to the internet.")
+                   return
+                      }
+        DispatchQueue.main.async {
+              self.delegate?.showActivityIndicator()
+              }
         apiService.apiCall { (isSuccesfull, response) in
             if isSuccesfull {
                 do {
@@ -46,15 +55,16 @@ class FactsviewModel: NSObject {
                 } catch {
                     print("error----", error.localizedDescription)
                 }
-            } else {
+            }
+            else {
                 DispatchQueue.main.async {
                     guard let responseString = response as? String else {
                         return
                     }
-                    self.delegate?.reloadController()
+                    self.delegate?.reloadcontroller()
                     self.delegate?.showAlert(messageStr: "server error occured")
                     self.delegate?.removeActivityIndicator()
-                    
+
                 }
             }
         }

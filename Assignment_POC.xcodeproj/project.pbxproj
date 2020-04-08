@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		141C30B2242241FE00015643 /* APIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141C30B1242241FE00015643 /* APIServiceTests.swift */; };
+		1431C1B8243D928C004D9DEC /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1431C1B7243D928B004D9DEC /* Connection.swift */; };
 		144617AD24064722000056B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617AC24064722000056B0 /* AppDelegate.swift */; };
 		144617B124064722000056B0 /* FactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 144617B024064722000056B0 /* FactViewController.swift */; };
 		144617B62406472B000056B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 144617B52406472B000056B0 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 
 /* Begin PBXFileReference section */
 		141C30B1242241FE00015643 /* APIServiceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIServiceTests.swift; sourceTree = "<group>"; };
+		1431C1B7243D928B004D9DEC /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		144617A924064722000056B0 /* Assignment_POC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Assignment_POC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		144617AC24064722000056B0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		144617B024064722000056B0 /* FactViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FactViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1431C1B6243D928B004D9DEC /* Connection */ = {
+			isa = PBXGroup;
+			children = (
+				1431C1B7243D928B004D9DEC /* Connection.swift */,
+			);
+			path = Connection;
+			sourceTree = "<group>";
+		};
 		144617A024064722000056B0 = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +121,7 @@
 		144617AB24064722000056B0 /* Assignment_POC */ = {
 			isa = PBXGroup;
 			children = (
+				1431C1B6243D928B004D9DEC /* Connection */,
 				52BF0557240F84EB00EEDA1E /* Appconstants */,
 				144617D32406593E000056B0 /* View */,
 				52CEC8D02408E18D00550C25 /* ViewModel */,
@@ -381,6 +392,7 @@
 				52CEC8D22408E20400550C25 /* FactsviewModel.swift in Sources */,
 				144617AD24064722000056B0 /* AppDelegate.swift in Sources */,
 				144617D224065872000056B0 /* Rows.swift in Sources */,
+				1431C1B8243D928C004D9DEC /* Connection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
