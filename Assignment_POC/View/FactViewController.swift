@@ -49,7 +49,11 @@ class FactViewController: UIViewController {
     func pullDownrefresh() {
         // set up the refresh control
         self.refreshControl.addTarget(self, action: #selector(refresh(sender:)) , for: UIControl.Event.valueChanged)
-        self.tableViewFacts.addSubview(refreshControl)
+        if #available(iOS 10.0, *) {
+          tableViewFacts.refreshControl = refreshControl
+        } else {
+          tableViewFacts.addSubview(refreshControl)
+        }
     }
     @objc func refresh(sender:AnyObject) {
         refreshControl.endRefreshing()

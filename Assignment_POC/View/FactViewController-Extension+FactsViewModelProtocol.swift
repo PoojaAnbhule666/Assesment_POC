@@ -29,7 +29,9 @@ extension FactViewController: FactsViewModelProtocol {
         }
     }
     func showAlert(messageStr: String) {
-        self.showConnectionAlert(messageStr: messageStr)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.showConnectionAlert(messageStr: messageStr)
+        }
     }
     func reloadcontroller() {
         self.tableViewFacts.reloadData()
