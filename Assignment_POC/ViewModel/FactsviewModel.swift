@@ -58,7 +58,7 @@ class FactsviewModel: NSObject {
             }
             else {
                 DispatchQueue.main.async {
-                    guard let responseString = response as? String else {
+                    guard response is String else {
                         return
                     }
                     self.delegate?.reloadcontroller()
