@@ -5,9 +5,6 @@
 //  Created by Pooja on 04/03/20.
 //  Copyright © 2020 Pooja. All rights reserved.
 //
-
-
-
 let datacellId = "DataTableViewCell"
 let placeholderImage = "placeholder"
 let webServiceUrl = "https://dl.dropboxusercontent.com/s/2iodh4vg0eortkl/facts.json"

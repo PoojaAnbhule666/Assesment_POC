@@ -41,7 +41,8 @@ class FactViewController: UIViewController {
     /**show alert when connect is not vailable*/
     func showConnectionAlert(messageStr: String) {
         let alert = UIAlertController.init(title: nil, message: messageStr, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: { _ in            alert.dismiss(animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "ok", style: UIAlertAction.Style.default, handler: { _ in
+                alert.dismiss(animated: true, completion: nil)
         }))
         self.present(alert, animated: true, completion: nil)
     }

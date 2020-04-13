@@ -12,17 +12,6 @@ list of conditions and the following disclaimer.
 this list of conditions and the following disclaimer in the documentation
 and/or other materials provided with the distribution.
 
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
-LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
-CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
-SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
-INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
-CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
-ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
-POSSIBILITY OF SUCH DAMAGE.
 */
 
 import SystemConfiguration
@@ -45,7 +34,9 @@ public extension Notification.Name {
 
 public class Reachability {
 
+    // swiftlint:disable:next void_return
     public typealias NetworkReachable = (Reachability) -> ()
+    // swiftlint:disable:next void_return
     public typealias NetworkUnreachable = (Reachability) -> ()
 
     @available(*, unavailable, renamed: "Connection")
@@ -133,6 +124,7 @@ public class Reachability {
                          notificationQueue: DispatchQueue? = .main) {
         self.allowsCellularConnection = true
         self.reachabilityRef = reachabilityRef
+        // swiftlint:disable:next line_length
         self.reachabilitySerialQueue = DispatchQueue(label: "uk.co.ashleymills.reachability", qos: queueQoS, target: targetQueue)
         self.notificationQueue = notificationQueue
     }
@@ -144,6 +136,7 @@ public class Reachability {
         guard let ref = SCNetworkReachabilityCreateWithName(nil, hostname) else {
             throw ReachabilityError.failedToCreateWithHostname(hostname, SCError())
         }
+        // swiftlint:disable:next line_length
         self.init(reachabilityRef: ref, queueQoS: queueQoS, targetQueue: targetQueue, notificationQueue: notificationQueue)
     }
 
@@ -157,7 +150,7 @@ public class Reachability {
         guard let ref = SCNetworkReachabilityCreateWithAddress(nil, &zeroAddress) else {
             throw ReachabilityError.failedToCreateWithAddress(zeroAddress, SCError())
         }
-
+        // swiftlint:disable:next line_length
         self.init(reachabilityRef: ref, queueQoS: queueQoS, targetQueue: targetQueue, notificationQueue: notificationQueue)
     }
 
@@ -185,6 +178,7 @@ public extension Reachability {
         }
 
         let weakifiedReachability = ReachabilityWeakifier(reachability: self)
+        // swiftlint:disable:next line_length
         let opaqueWeakifiedReachability = Unmanaged<ReachabilityWeakifier>.passUnretained(weakifiedReachability).toOpaque()
 
         var context = SCNetworkReachabilityContext(
@@ -355,6 +349,7 @@ extension SCNetworkReachabilityFlags {
         let demandFlag = isConnectionOnDemandFlagSet ? "D" : "-"
         let localAddressFlag = isLocalAddressFlagSet ? "l" : "-"
         let directFlag = isDirectFlagSet ? "d" : "-"
+        // swiftlint:disable:next line_length
        return "\(onWWANFlag)\(reachableFlag)\(connectionRequiredFlag)\(transientConnectionFlag)\(interventionRequiredFlag)\(connectionOnTrafficFlag)\(demandFlag)\(localAddressFlag)\(directFlag)"
     }
 }

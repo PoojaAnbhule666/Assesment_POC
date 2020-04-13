@@ -26,6 +26,8 @@ class ApiServicesCallTests: XCTestCase {
               let expect = XCTestExpectation(description: "callback")
               fact.apiCall { (isSuccesfull, response) in
                   expect.fulfill()
+                if isSuccesfull {
+                }
                   do {
                       let decoder = JSONDecoder()
                       guard let responseData = response as? Data else {

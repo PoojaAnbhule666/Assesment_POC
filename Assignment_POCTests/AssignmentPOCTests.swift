@@ -10,12 +10,12 @@ import XCTest
 @testable import Assignment_POC
 
 class AssignmentPOCTests: XCTestCase {
-    var viewControllerUnderTest: FactViewController!
+    var vcntrTest: FactViewController!
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        self.viewControllerUnderTest = FactViewController()
-        self.viewControllerUnderTest.loadView()
-        self.viewControllerUnderTest.viewDidLoad()
+        self.vcntrTest = FactViewController()
+        self.vcntrTest.loadView()
+        self.vcntrTest.viewDidLoad()
     }
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
@@ -25,18 +25,18 @@ class AssignmentPOCTests: XCTestCase {
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
     func testHasATableView() {
-        XCTAssertNotNil(viewControllerUnderTest.tableViewFacts)
+        XCTAssertNotNil(vcntrTest.tableViewFacts)
     }
     func testTableViewHasDataSource() {
-        XCTAssertNotNil(viewControllerUnderTest.tableViewFacts.dataSource)
+        XCTAssertNotNil(vcntrTest.tableViewFacts.dataSource)
     }
     func testTableViewHasDelegater() {
-        XCTAssertNotNil(viewControllerUnderTest.tableViewFacts.delegate)
+        XCTAssertNotNil(vcntrTest.tableViewFacts.delegate)
     }
     func testTableViewConformsToTableViewDataSourceProtocol() {
-        XCTAssertTrue(viewControllerUnderTest.conforms(to: UITableViewDataSource.self))
-        XCTAssertTrue(viewControllerUnderTest.responds(to: #selector(viewControllerUnderTest.tableView(_:numberOfRowsInSection:))))
-        XCTAssertTrue(viewControllerUnderTest.responds(to: #selector(viewControllerUnderTest.tableView(_:cellForRowAt:))))
+        XCTAssertTrue(vcntrTest.conforms(to: UITableViewDataSource.self))
+        XCTAssertTrue(vcntrTest.responds(to: #selector(vcntrTest.tableView(_:numberOfRowsInSection:))))
+        XCTAssertTrue(vcntrTest.responds(to: #selector(vcntrTest.tableView(_:cellForRowAt:))))
     }
 
 }

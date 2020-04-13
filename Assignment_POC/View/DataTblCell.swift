@@ -40,11 +40,12 @@ class DataTblCell: UITableViewCell {
         didSet {
             lblTitle.text = dataViewModel?.titleString
             lblDescription.text = dataViewModel?.desctiptionString
-            let imgStr = dataViewModel?.imageHrefUrl
-            let placeImage = UIImage(named: placeholderImage)
-            imgProduct.sd_setImage(with: imgStr, placeholderImage: placeImage, options: SDWebImageOptions.refreshCached) { (image, error, type, url) in
-                if error != nil {
-                    print("failed to download \(String(describing: url))  error \(String(describing: error))")
+            let url = dataViewModel?.imageHrefUrl
+            let img = UIImage(named: placeholderImage)
+            // swiftlint:disable:next unused_closure_parameter
+            imgProduct.sd_setImage(with: url, placeholderImage: img, options: .refreshCached) { (img, err, typ, url) in
+                if err != nil {
+                    print("failed to download \(String(describing: url))  error \(String(describing: err))")
                 }
             }
         }
@@ -52,7 +53,6 @@ class DataTblCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         let marginGuide = contentView.layoutMarginsGuide
-        
         // configure imageView
         contentView.addSubview(imgProduct)
         imgProduct.leadingAnchor.constraint(equalTo: marginGuide.leadingAnchor, constant: 10).isActive = true
