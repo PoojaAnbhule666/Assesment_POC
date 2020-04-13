@@ -35,8 +35,7 @@ extension FactViewController: FactsViewModelProtocol {
     }
     func reloadcontroller() {
         self.tableViewFacts.reloadData()
-        if refreshControl.isRefreshing
-        {
+        if refreshControl.isRefreshing {
             self.refreshControl.endRefreshing()
         }
     }

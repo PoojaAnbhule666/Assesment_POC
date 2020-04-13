@@ -13,14 +13,13 @@ extension FactViewController: UITableViewDataSource {
         return factsViewModel.rowsArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: datacellId, for: indexPath) as? DataTblCell else {
+    guard let cell = tableView.dequeueReusableCell(withIdentifier: datacellId, for: indexPath) as? DataTblCell else {
             return DataTblCell.init(style: .default, reuseIdentifier: datacellId)
         }
         cell.dataViewModel = DataTableViewModel.init(countryInfoData: factsViewModel.rowsArray[indexPath.row])
         
         cell.setNeedsLayout()
         cell.layoutIfNeeded()
-    
         return cell
     }
 }

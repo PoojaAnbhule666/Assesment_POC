@@ -17,7 +17,6 @@ protocol FactsViewModelProtocol: AnyObject {
 }
 
 class FactsviewModel: NSObject {
-    
     weak var delegate: FactsViewModelProtocol?
     var rowsArray = [Rows]()
     let apiService: APIServiceProtocol
@@ -29,14 +28,14 @@ class FactsviewModel: NSObject {
     func updateFacts() {
         network.reachability.whenUnreachable = { reachability in
             DispatchQueue.main.async {
-             self.delegate?.removeActivityIndicator()
+                self.delegate?.removeActivityIndicator()
             }
-                          self.delegate?.showAlert(messageStr: "Unable to connect to the internet.")
-                   return
-                      }
+            self.delegate?.showAlert(messageStr: "Unable to connect to the internet.")
+            return
+        }
         DispatchQueue.main.async {
-              self.delegate?.showActivityIndicator()
-              }
+            self.delegate?.showActivityIndicator()
+        }
         apiService.apiCall { (isSuccesfull, response) in
             if isSuccesfull {
                 do {
@@ -51,20 +50,17 @@ class FactsviewModel: NSObject {
                         self.delegate?.updateAllFacts(navigationTitle: jsonData.title ?? "")
                         self.delegate?.removeActivityIndicator()
                     }
-                    
                 } catch {
                     print("error----", error.localizedDescription)
                 }
-            }
-            else {
+            } else {
                 DispatchQueue.main.async {
-                    guard response is String else {
+                guard response is String else {
                         return
                     }
                     self.delegate?.reloadcontroller()
                     self.delegate?.showAlert(messageStr: "server error occured")
                     self.delegate?.removeActivityIndicator()
-
                 }
             }
         }

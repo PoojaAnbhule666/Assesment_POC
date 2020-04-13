@@ -12,7 +12,7 @@ protocol APIServiceProtocol {
     func apiCall(completionBlock : @escaping (_ successful: Bool, _ responseData: Any) -> ())
 }
 
-class FactsService: APIServiceProtocol{
+class FactsService: APIServiceProtocol {
     /**get api call request*/
        func apiCall(completionBlock : @escaping (_ successful: Bool, _ responseData: Any) -> ()) {
            guard let url = URL(string: webServiceUrl) else { return }

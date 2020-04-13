@@ -6,6 +6,7 @@ target 'Assignment_POC' do
   use_frameworks!
   pod 'SDWebImage', '~> 5.0'
   pod 'ReachabilitySwift'
+  pod 'SwiftLint'
   
 
   # Pods for Assignment_POC

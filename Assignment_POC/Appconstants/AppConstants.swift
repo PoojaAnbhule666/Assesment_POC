@@ -6,7 +6,7 @@
 //  Copyright © 2020 Pooja. All rights reserved.
 //
 
-import Foundation
+
 
 let datacellId = "DataTableViewCell"
 let placeholderImage = "placeholder"

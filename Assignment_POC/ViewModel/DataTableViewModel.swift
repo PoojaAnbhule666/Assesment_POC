@@ -9,7 +9,6 @@
 import UIKit
 
 class DataTableViewModel: NSObject {
-    
     var rowModel: Rows?
     var titleString: String {
         return rowModel?.title ?? ""

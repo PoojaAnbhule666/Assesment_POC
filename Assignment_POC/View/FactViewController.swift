@@ -48,16 +48,15 @@ class FactViewController: UIViewController {
     /**when refreshcontroller is added then pull down to refresh  and call url and update data in tableview.*/
     func pullDownrefresh() {
         // set up the refresh control
-        self.refreshControl.addTarget(self, action: #selector(refresh(sender:)) , for: UIControl.Event.valueChanged)
+        self.refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: UIControl.Event.valueChanged)
         if #available(iOS 10.0, *) {
           tableViewFacts.refreshControl = refreshControl
         } else {
           tableViewFacts.addSubview(refreshControl)
         }
     }
-    @objc func refresh(sender:AnyObject) {
+    @objc func refresh(sender: AnyObject) {
         refreshControl.endRefreshing()
         factsViewModel.updateFacts()
     }
-    
 }
